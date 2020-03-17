@@ -1,4 +1,4 @@
-package com.jeychan.taxi_backend_web;
+package com.jeychan.taxibackend.web;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

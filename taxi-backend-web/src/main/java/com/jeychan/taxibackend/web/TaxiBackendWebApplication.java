@@ -1,4 +1,4 @@
-package com.jeychan.taxi_backend_web;
+package com.jeychan.taxibackend.web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author Wilder
  */
-@SpringBootApplication(scanBasePackages = "com.jeychan.backend")
+@SpringBootApplication(scanBasePackages = "com.jeychan.taxibackend.common")
 public class TaxiBackendWebApplication {
 
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.jeychan.backend.config;
+package com.jeychan.taxibackend.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
