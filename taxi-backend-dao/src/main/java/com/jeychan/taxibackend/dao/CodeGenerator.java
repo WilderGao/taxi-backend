@@ -80,9 +80,6 @@ public class CodeGenerator {
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
 
-        // 写于父类中的公共字段
-        strategy.setSuperEntityColumns("id");
-
         //表名，多个英文逗号分割
         strategy.setInclude("trip,trip_pickup,trip_dropoff".split(","));
         strategy.setControllerMappingHyphenStyle(true);

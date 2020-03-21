@@ -1,6 +1,5 @@
-package com.jeychan.taxibackend.common.websocket;
+package com.jeychan.taxibackend.common.operator;
 
-import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

@@ -18,7 +18,7 @@ public class CsvUtil {
      * @param fileName 文件名
      * @param listener 异步读取监听器
      */
-    public static void readExcel(String path, String fileName, AnalysisEventListener listener, Class c) {
+    public static void readCsv(String path, String fileName, AnalysisEventListener listener, Class c) {
         String filePath = path + fileName;
         EasyExcel.read(filePath, c, listener).sheet().doRead();
     }

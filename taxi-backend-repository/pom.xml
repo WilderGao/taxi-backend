@@ -9,28 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>taxi-backend-service</artifactId>
-
+    <artifactId>taxi-backend-repository</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.jeychan</groupId>
-            <artifactId>taxi-backend-repository</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.jeychan</groupId>
-            <artifactId>taxi-backend-common</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>easyexcel</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
+            <artifactId>taxi-backend-dao</artifactId>
         </dependency>
     </dependencies>
 </project>
