@@ -33,7 +33,7 @@ public class CodeGenerator {
         //数据源配置
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
         dataSourceConfig.setUrl("jdbc:mysql://localhost:3306/taxi-backend?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC");
-        dataSourceConfig.setDriverName("com.mysql.cj.jdbc.Driver");
+        dataSourceConfig.setDriverName("com.mysql.jdbc.Driver");
         dataSourceConfig.setUsername("root");
         dataSourceConfig.setPassword("123456");
         generator.setDataSource(dataSourceConfig);
@@ -81,7 +81,7 @@ public class CodeGenerator {
         strategy.setRestControllerStyle(true);
 
         //表名，多个英文逗号分割
-        strategy.setInclude("trip,trip_pickup,trip_dropoff".split(","));
+        strategy.setInclude("geohash_gps,real_information,real_information_detail".split(","));
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(packageConfig.getModuleName() + "_");
         generator.setStrategy(strategy);

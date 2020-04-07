@@ -1,13 +1,10 @@
 package com.jeychan.taxibackend.web;
 
-import com.jeychan.taxibackend.service.interfaces.CsvReadService;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-
-import javax.annotation.Resource;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * @author Wilder

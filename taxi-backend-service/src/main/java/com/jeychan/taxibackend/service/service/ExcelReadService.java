@@ -1,4 +1,4 @@
-package com.jeychan.taxibackend.service.interfaces;
+package com.jeychan.taxibackend.service.service;
 
 /**
  * @author WilderGao
@@ -6,7 +6,7 @@ package com.jeychan.taxibackend.service.interfaces;
  * motto : everything is no in vain
  * description
  */
-public interface CsvReadService {
+public interface ExcelReadService {
     /**
      * 将csv的数据导入到数据库
      *

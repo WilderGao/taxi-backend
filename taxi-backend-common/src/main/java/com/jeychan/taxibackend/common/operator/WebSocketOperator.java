@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -13,11 +14,11 @@ import java.util.concurrent.ConcurrentHashMap;
  * motto : everything is no in vain
  * description
  */
+@Component
 @Slf4j
 @ServerEndpoint("/taxi_backend/real_time")
-@Component
-public class WebSocketServer {
-    private ConcurrentHashMap<String, Session> clients = new ConcurrentHashMap<>(16);
+public class WebSocketOperator {
+    private static ConcurrentHashMap<String, Session> clients = new ConcurrentHashMap<>(16);
 
     @OnOpen
     public void onOpen(Session session) {
@@ -37,6 +38,9 @@ public class WebSocketServer {
         });
     }
 
+    public static Map<String, Session> getClients() {
+        return clients;
+    }
     /*
      * 很奇怪，自己重写onClose和onError会报错
      */

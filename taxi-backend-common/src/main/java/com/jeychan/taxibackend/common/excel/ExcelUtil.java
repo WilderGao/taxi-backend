@@ -1,4 +1,4 @@
-package com.jeychan.taxibackend.common.csv;
+package com.jeychan.taxibackend.common.excel;
 
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.event.AnalysisEventListener;
@@ -9,7 +9,7 @@ import com.alibaba.excel.event.AnalysisEventListener;
  * motto : everything is no in vain
  * description
  */
-public class CsvUtil {
+public class ExcelUtil {
 
     /**
      * 异步操作读取csv

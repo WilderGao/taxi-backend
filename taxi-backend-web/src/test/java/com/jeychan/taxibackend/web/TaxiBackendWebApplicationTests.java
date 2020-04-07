@@ -1,29 +1,35 @@
 package com.jeychan.taxibackend.web;
 
-import com.jeychan.taxibackend.service.interfaces.CsvReadService;
-import org.junit.jupiter.api.Test;
+import com.jeychan.taxibackend.service.service.ExcelReadService;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {TaxiBackendWebApplication.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class TaxiBackendWebApplicationTests {
+public class TaxiBackendWebApplicationTests {
 
     @Autowired
-    private CsvReadService csvReadService;
+    private ExcelReadService excelReadService;
+
+    @Autowired
+    private KafkaTemplate<String, String> kafkaTemplate;
 
     @Test
-    void contextLoads() {
+    public void contextLoads() {
+        kafkaTemplate.send("gjc.trip.pickup", "aaaaaa");
     }
 
     @Test
-    void loadCsvToDatabase() {
-        String fileName = "yellow_tripdata_2016-01.xlsx";
+    public void loadCsvToDatabase() {
+        String fileName = "yellow_tripdata_2016-01 - 副本.csv";
         String filePath = "E:\\课内学习\\毕业设计\\收集数据\\";
 
-        csvReadService.importCsvDataToDatabase(fileName, filePath);
+        excelReadService.importCsvDataToDatabase(fileName, filePath);
     }
 
 }

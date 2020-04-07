@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
-import javax.annotation.Resource;
 
 /**
  * @author WilderGao
@@ -18,7 +17,7 @@ import javax.annotation.Resource;
  */
 @Component
 @Slf4j
-public class KafkaProducer {
+public class KafkaOperator {
 
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
@@ -39,7 +38,6 @@ public class KafkaProducer {
                         topic, key, value, sendResult.getRecordMetadata().offset());
             }
         });
-
     }
 
 }

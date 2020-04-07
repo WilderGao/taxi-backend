@@ -1,8 +1,8 @@
-package com.jeychan.taxibackend.service.impl;
+package com.jeychan.taxibackend.service.service.impl;
 
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
-import com.jeychan.taxibackend.common.csv.CsvUtil;
+import com.jeychan.taxibackend.common.excel.ExcelUtil;
 import com.jeychan.taxibackend.dao.entity.Trip;
 import com.jeychan.taxibackend.dao.entity.TripDropoff;
 import com.jeychan.taxibackend.dao.entity.TripPickup;
@@ -10,7 +10,7 @@ import com.jeychan.taxibackend.rep.service.ITripDropoffRepository;
 import com.jeychan.taxibackend.rep.service.ITripPickupRepository;
 import com.jeychan.taxibackend.rep.service.ITripRepository;
 import com.jeychan.taxibackend.service.domain.TaxiTrajectory;
-import com.jeychan.taxibackend.service.interfaces.CsvReadService;
+import com.jeychan.taxibackend.service.service.ExcelReadService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +31,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 @Slf4j
 @Service
-public class CsvReadServiceImpl implements CsvReadService {
+public class ExcelReadServiceImpl implements ExcelReadService {
 
     @Autowired
     private ITripRepository iTripRepository;
@@ -45,7 +45,7 @@ public class CsvReadServiceImpl implements CsvReadService {
     @Override
     public int importCsvDataToDatabase(String fileName, String filePath) {
         CsvAnalyseListenerOperator operator = new CsvAnalyseListenerOperator();
-        CsvUtil.readCsv(filePath, fileName, operator, TaxiTrajectory.class);
+        ExcelUtil.readCsv(filePath, fileName, operator, TaxiTrajectory.class);
         return 0;
     }
 
