@@ -1,4 +1,4 @@
-package com.jeychan.taxibackend.service.domain.realtime;
+package com.jeychan.taxibackend.service.vo.realtime;
 
 import lombok.Data;
 
@@ -9,7 +9,7 @@ import lombok.Data;
  * description 区域统计情况
  */
 @Data
-public class DistinctInform {
+public class DistinctInformVo {
     /**
      * 纽约市所属地区：1、Bronx; 2、Manhattan;3、Brooklyn; 4、Queens; 5、Staten Island
      */

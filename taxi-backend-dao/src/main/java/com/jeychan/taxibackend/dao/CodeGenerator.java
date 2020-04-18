@@ -81,7 +81,7 @@ public class CodeGenerator {
         strategy.setRestControllerStyle(true);
 
         //表名，多个英文逗号分割
-        strategy.setInclude("geohash_gps,real_information,real_information_detail".split(","));
+        strategy.setInclude("collection_hour,collection_day,collection_month".split(","));
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(packageConfig.getModuleName() + "_");
         generator.setStrategy(strategy);

@@ -2,14 +2,14 @@ package com.jeychan.taxibackend.service.service.impl;
 
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
-import com.jeychan.taxibackend.common.excel.ExcelUtil;
+import com.jeychan.taxibackend.common.util.ExcelUtil;
 import com.jeychan.taxibackend.dao.entity.Trip;
 import com.jeychan.taxibackend.dao.entity.TripDropoff;
 import com.jeychan.taxibackend.dao.entity.TripPickup;
 import com.jeychan.taxibackend.rep.service.ITripDropoffRepository;
 import com.jeychan.taxibackend.rep.service.ITripPickupRepository;
 import com.jeychan.taxibackend.rep.service.ITripRepository;
-import com.jeychan.taxibackend.service.domain.TaxiTrajectory;
+import com.jeychan.taxibackend.service.vo.TaxiTrajectoryVo;
 import com.jeychan.taxibackend.service.service.ExcelReadService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,12 +45,12 @@ public class ExcelReadServiceImpl implements ExcelReadService {
     @Override
     public int importCsvDataToDatabase(String fileName, String filePath) {
         CsvAnalyseListenerOperator operator = new CsvAnalyseListenerOperator();
-        ExcelUtil.readCsv(filePath, fileName, operator, TaxiTrajectory.class);
+        ExcelUtil.readCsv(filePath, fileName, operator, TaxiTrajectoryVo.class);
         return 0;
     }
 
 
-    class CsvAnalyseListenerOperator extends AnalysisEventListener<TaxiTrajectory> {
+    class CsvAnalyseListenerOperator extends AnalysisEventListener<TaxiTrajectoryVo> {
         private List<Trip> trips = new LinkedList<>();
         private List<TripPickup> tripPickups = new LinkedList<>();
         private List<TripDropoff> tripDropoffs = new LinkedList<>();
@@ -62,7 +62,7 @@ public class ExcelReadServiceImpl implements ExcelReadService {
         private static final int MAX_SPEED_LIMIT = 100;
 
         @Override
-        public void invoke(TaxiTrajectory taxiTrajectory, AnalysisContext analysisContext) {
+        public void invoke(TaxiTrajectoryVo taxiTrajectory, AnalysisContext analysisContext) {
             if (taxiTrajectory.getPickupDatetime().equals(taxiTrajectory.getDropOffDatetime())) {
                 log.warn("CsvReadServiceImpl.CsvAnalyseListenerOperator.invoke: trash data, data={}", taxiTrajectory);
                 return;

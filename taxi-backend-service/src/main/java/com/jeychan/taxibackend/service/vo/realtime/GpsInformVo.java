@@ -1,4 +1,4 @@
-package com.jeychan.taxibackend.service.domain.realtime;
+package com.jeychan.taxibackend.service.vo.realtime;
 
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +11,7 @@ import lombok.Data;
  */
 @Data
 @Builder
-public class GpsInform {
+public class GpsInformVo {
     /**
      * 经度
      */

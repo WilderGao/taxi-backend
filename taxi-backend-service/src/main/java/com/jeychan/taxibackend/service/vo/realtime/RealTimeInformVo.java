@@ -1,4 +1,4 @@
-package com.jeychan.taxibackend.service.domain.realtime;
+package com.jeychan.taxibackend.service.vo.realtime;
 
 import lombok.Data;
 
@@ -12,7 +12,7 @@ import java.util.List;
  * description 业务对象：websocket传递的统计结果对象
  */
 @Data
-public class RealTimeInform {
+public class RealTimeInformVo {
     /**
      * 起始时间
      */
@@ -26,17 +26,17 @@ public class RealTimeInform {
     /**
      * 地图实时信息数据集 —— 上车
      */
-    private List<GpsInform> gpsInformsPickup;
+    private List<GpsInformVo> gpsInformsPickup;
 
     /**
      * 地图实时信息数据集 —— 下车
      */
-    private List<GpsInform> gpsInformsDropoff;
+    private List<GpsInformVo> gpsInformsDropoff;
 
     /**
      * 区域实时统计结果
      */
-    private List<DistinctInform> distinctInforms;
+    private List<DistinctInformVo> distinctInforms;
 
     /**
      * 上车人数

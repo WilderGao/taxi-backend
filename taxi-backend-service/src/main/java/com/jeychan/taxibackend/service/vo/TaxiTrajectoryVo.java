@@ -1,4 +1,4 @@
-package com.jeychan.taxibackend.service.domain;
+package com.jeychan.taxibackend.service.vo;
 
 import com.alibaba.excel.annotation.ExcelProperty;
 import lombok.Data;
@@ -13,7 +13,7 @@ import java.io.Serializable;
  * description 出租车轨迹数据
  */
 @Data
-public class TaxiTrajectory implements Serializable {
+public class TaxiTrajectoryVo implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ExcelProperty(value = "VendorID", index = 0)
