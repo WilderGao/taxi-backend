@@ -21,7 +21,7 @@ public class LocalDateTimeUtil {
         LocalDateTime startDateTime = LocalDateTime.parse("2016-01-01 00:00", formatter);
 
         //作为参考系时间，求出当前时间与参考系时间相差多少天和多少秒
-        LocalDateTime checkDateTime = LocalDateTime.parse("2020-04-12 12:10", formatter);
+        LocalDateTime checkDateTime = LocalDateTime.parse("2020-04-21 16:50", formatter);
         long totalSubDay = now.toLocalDate().toEpochDay() - checkDateTime.toLocalDate().toEpochDay();
         long totalSubSec = now.toLocalTime().toSecondOfDay() - checkDateTime.toLocalTime().toSecondOfDay();
 

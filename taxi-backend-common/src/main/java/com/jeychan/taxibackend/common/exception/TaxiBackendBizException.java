@@ -9,11 +9,11 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class DataPowerBizException extends DataPowerException {
+public class TaxiBackendBizException extends TaxiBackendException {
 
     private BizErrorCode bizErrorCode;
 
-    public DataPowerBizException(BizErrorCode bizErrorCode) {
+    public TaxiBackendBizException(BizErrorCode bizErrorCode) {
         super(bizErrorCode.getDesc());
         this.bizErrorCode = bizErrorCode;
     }

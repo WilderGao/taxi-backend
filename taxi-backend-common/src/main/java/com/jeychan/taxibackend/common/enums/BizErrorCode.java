@@ -18,7 +18,9 @@ public enum BizErrorCode {
     DAYS_NOT_FOUND(2001, "元表不存在"),
 
 
-    PARAM_INVALID(3001, "参数不合法"),
+    DATE_TIME_INVALID(2003, "查询日期超过当前日期"),
+
+    TYPE_INVALID(3001, "查询类型不合法"),
     PARAM_LACK(3002, "参数不全"),
     ;
 

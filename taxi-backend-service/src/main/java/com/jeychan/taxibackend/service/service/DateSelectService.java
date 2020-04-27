@@ -33,4 +33,10 @@ public interface DateSelectService {
      * @return 可以提供选择的日期
      */
     List<Integer> queryViewableDays(int year, int month);
+
+    /**
+     * 获取当前时间
+     * @return 当前时间字符串
+     */
+    String queryCurrentTime();
 }

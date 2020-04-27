@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * @author WilderGao
@@ -33,5 +34,14 @@ public class RealInformationRepositoryImpl extends ServiceImpl<RealInformationMa
 
         return realInformationMapper.selectOne(queryWrapper);
 
+    }
+
+    @Override
+    public List<RealInformation> queryInformationByDayHour(LocalDate date, int hour) {
+        QueryWrapper<RealInformation> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq(RealInformation.START_DAY, date);
+        queryWrapper.eq(RealInformation.START_HOUR, hour);
+
+        return realInformationMapper.selectList(queryWrapper);
     }
 }

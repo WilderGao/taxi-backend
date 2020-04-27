@@ -58,7 +58,7 @@ public class RealTimeService {
      * 实时数据定时任务
      */
     @Scheduled(cron = "0 */1 * * * ?")
-    private void realTimeTask() {
+    public void realTimeTask() {
         Map<String, Session> clients = WebSocketOperator.getClients();
 
         //获取当前时间(经过格式化后的时间)
@@ -68,7 +68,6 @@ public class RealTimeService {
         RealInformation realInformation = realInformationRepository.queryInformationByDayHourMin(now.toLocalDate(),
                 now.getHour(), now.getMinute());
 
-        log.info("RealTimeService.scheduleTask: query realInformation, data={}", realInformation);
         if (realInformation == null || realInformation.getId() == null) {
             log.warn("RealTimeService.scheduleTask: realInformation or id is null, time={}", now);
             return;
@@ -116,17 +115,22 @@ public class RealTimeService {
                 details.stream().collect(Collectors.groupingBy(RealInformationDetail::getType, Collectors.toList()));
 
         typeGroupByMap.forEach((type, indexDetails) -> {
-            List<GpsInformVo> gpsInforms = indexDetails.stream().map(detail -> {
-                GeohashGps geohashGps = geohashGpsRepository.getGeohashGpsByGeohash(detail.getGeohash());
-                //构建gpsInform
-                return GpsInformVo.builder()
-                        .distinctId(geohashGps.getDist())
-                        .longitude(geohashGps.getLongitude())
-                        .latitude(geohashGps.getLatitude())
-                        .num(detail.getOrderNum())
-                        .type(detail.getType())
-                        .build();
-            }).collect(Collectors.toList());
+            System.out.println(type);
+
+            List<GpsInformVo> gpsInforms = new ArrayList<>();
+            for (RealInformationDetail indexDetail : indexDetails) {
+                GeohashGps geohashGps = geohashGpsRepository.getGeohashGpsByGeohash(indexDetail.getGeohash());
+                if (geohashGps != null) {
+                    GpsInformVo gpsInformVo = GpsInformVo.builder()
+                            .distinctId(geohashGps.getDist())
+                            .longitude(geohashGps.getLongitude())
+                            .latitude(geohashGps.getLatitude())
+                            .num(indexDetail.getOrderNum())
+                            .type(indexDetail.getType())
+                            .build();
+                    gpsInforms.add(gpsInformVo);
+                }
+            }
 
             if (type == RealInformationDetail.PICK_UP) {
                 realTimeInform.setGpsInformsPickup(gpsInforms);
@@ -150,6 +154,7 @@ public class RealTimeService {
                     });
         });
 
+        log.info("distinct summary: {}", distinctInformMap);
         List<DistinctInformVo> finalDistinctInforms = new ArrayList<>();
         distinctInformMap.forEach((k, v) -> finalDistinctInforms.add(v));
 

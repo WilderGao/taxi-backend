@@ -6,10 +6,7 @@ import com.jeychan.taxibackend.web.domain.CommonResponse;
 import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,6 +18,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/date/select")
+@CrossOrigin
 public class DateSelectController {
 
     @Autowired
@@ -44,9 +42,15 @@ public class DateSelectController {
         return packageResponse(days);
     }
 
+    @GetMapping("/current")
+    public CommonResponse<String> queryCurrentTime() {
+        String currentTime = dateSelectService.queryCurrentTime();
+        return CommonResponse.success(currentTime);
+    }
+
     private CommonResponse<List<Integer>> packageResponse(List<Integer> result) {
         if (result == null || result.isEmpty()) {
-            return new CommonResponse<>(BizErrorCode.PARAM_INVALID.getCode(), BizErrorCode.PARAM_INVALID.getDesc(), null);
+            return new CommonResponse<>(BizErrorCode.PARAMETER_ERROR.getCode(), BizErrorCode.PARAMETER_ERROR.getDesc(), null);
         }
         return CommonResponse.success(result);
     }

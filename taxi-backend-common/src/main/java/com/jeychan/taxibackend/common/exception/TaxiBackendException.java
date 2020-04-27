@@ -8,6 +8,6 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
-public class DataPowerException extends RuntimeException{
+public class TaxiBackendException extends RuntimeException{
     String message;
 }

@@ -62,6 +62,7 @@ public class DateSelectServiceImpl implements DateSelectService {
         log.info("DateSelectServiceImpl.queryViewableMonth: query viewable month, year={}", year);
         LocalDateTime currentDateTime = LocalDateTimeUtil.queryCurrentTime(LocalDateTime.now());
         if (currentDateTime.getYear() > year) {
+            log.info("querying year is not current year, currentYear = {}, year={}", currentDateTime.getYear(), year);
             return Arrays.asList(MONTHS);
         } else if (currentDateTime.getYear() == year) {
             //表示查询是的当年
@@ -71,6 +72,7 @@ public class DateSelectServiceImpl implements DateSelectService {
                 result.add(month);
                 month++;
             }
+            log.info("querying year is current year, currentYear = {}, year={}", currentDateTime.getYear(), year);
             return result;
         } else {
             log.warn("DateSelectServiceImpl.queryViewableMonth warning: year is bigger than current year, year={}, currentYear={}",
@@ -103,5 +105,11 @@ public class DateSelectServiceImpl implements DateSelectService {
             startDay++;
         }
         return result;
+    }
+
+    @Override
+    public String queryCurrentTime() {
+        log.info("DateSelectServiceImpl.queryCurrentTime info: query current time");
+        return LocalDateTimeUtil.queryCurrentTime(LocalDateTime.now()).toString();
     }
 }
