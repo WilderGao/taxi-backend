@@ -26,7 +26,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <spring.boot.version>2.0.3.RELEASE</spring.boot.version>
+        <spring.boot.version>2.5.12</spring.boot.version>
         <taxi-backend.version>0.0.1-SNAPSHOT</taxi-backend.version>
     </properties>
 
